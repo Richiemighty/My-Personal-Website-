@@ -2,28 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gallery</title>
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- Link to your main CSS -->
+  <title>Richie Mighty Photos</title>
+  <meta name="google-site-verification" content="70NuuT1LpT0uGdSk6grCyls0H3MTlbMZLvKAU-n3EU0" />
+  <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
-
+  
+  <!-- Add some custom CSS for the modal -->
+  <style>
+    .modal-dialog {
+      max-width: 90%;
+      margin: 30px auto;
+    }
+    .modal-content {
+      background: #000;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 
   <section class="container py-5">
-    <h2 class="mb-4 text-center">Image Gallery</h2>
+    <h2 class="mb-4 text-center">Richie Mighty Gallery</h2>
     <div class="row g-3">
-      <div class="col-md-4">
-        <img src="assets/img/DSC_4436.psdx.JPG" class="img-fluid rounded" alt="Image 1">
+      <!-- Use responsive Bootstrap column classes -->
+      <div class="col-12  col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4436.psdx.JPG')">
+          <img src="assets/img/DSC_4436.psdx.JPG" class="img-fluid rounded" alt="Image 1">
+        </a>
       </div>
-      <div class="col-md-4">
-        <img src="assets/img/DSC_4418.psdx.JPG" class="img-fluid rounded" alt="Image 2">
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4418.psdx.JPG')">
+          <img src="assets/img/DSC_4418.psdx.JPG" class="img-fluid rounded" alt="Image 2">
+        </a>
       </div>
-      <div class="col-md-4">
-        <img src="assets/img/DSC_4438.psdx.JPG" class="img-fluid rounded" alt="Image 3">
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4438.psdx.JPG')">
+          <img src="assets/img/DSC_4438.psdx.JPG" class="img-fluid rounded" alt="Image 3">
+        </a>
+      </div>
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4436.psdx.JPG')">
+          <img src="assets/img/DSC_4436.psdx.JPG" class="img-fluid rounded" alt="Image 4">
+        </a>
+      </div>
+      <div class="col-12  col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4441.psdx.JPG')">
+          <img src="assets/img/DSC_4441.psdx.JPG" class="img-fluid rounded" alt="Image 5">
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4441.psdx.JPG')">
+          <img src="assets/img/DSC_4441.psdx.JPG" class="img-fluid rounded" alt="Image 6">
+        </a>
+      </div>
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4443.psdx.JPG')">
+          <img src="assets/img/DSC_4443.psdx.JPG" class="img-fluid rounded" alt="Image 7">
+        </a>
+      </div>
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4438.psdx.JPG')">
+          <img src="assets/img/DSC_4438.psdx.JPG" class="img-fluid rounded" alt="Image 8">
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/DSC_4439.psdx 2.jpg')">
+          <img src="assets/img/DSC_4439.psdx 2.jpg" class="img-fluid rounded" alt="Image 9">
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/IMG_1734.JPG')">
+          <img src="assets/img/IMG_1734.JPG" class="img-fluid rounded" alt="Image 10">
+        </a>
+      </div>
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/IMG_5628.jpg')">
+          <img src="assets/img/IMG_5628.jpg" class="img-fluid rounded" alt="Image 11">
+        </a>
+      </div>
+      <div class="col-12 col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('assets/img/IMG_1727 3.jpg')">
+          <img src="assets/img/IMG_1727 3.jpg" class="img-fluid rounded" alt="Image 12">
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- Modal to display the enlarged image -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <img id="modalImage" src="" class="img-fluid" alt="Expanded Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function showImage(src) {
+      document.getElementById('modalImage').src = src;
+    }
+  </script>
 </body>
 </html>
