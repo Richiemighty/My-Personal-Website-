@@ -227,3 +227,26 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+
+const images = [
+  // 'assets/img/IMG_1727 2.JPG',
+  'assets/img/IMG_1729.JPG',
+  'assets/img/IMG_5629 2.jpg',
+  'assets/img/DSC_4439.psdx 2.jpg',
+  'assets/img/IMG_1727 3.jpg'
+  // 'assets/img/IMG_1734.JPG'
+];
+
+let currentImage = 0;
+const heroBackground = document.querySelector('.hero-background');
+
+function updateBackground() {
+  heroBackground.style.backgroundImage = `url('${images[currentImage]}')`;
+  currentImage = (currentImage + 1) % images.length;
+}
+
+// Initialize and set interval
+updateBackground();
+setInterval(updateBackground, 5000); // Change every 5 seconds

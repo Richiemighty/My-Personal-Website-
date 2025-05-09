@@ -539,6 +539,40 @@ section,
   margin-bottom: 0;
 }
 
+
+
+.another a {
+  font-size: 50px; /* Increased size */
+  margin: 0 15px;
+  transition: transform 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.another a:hover {
+  transform: scale(1.2);
+}
+
+/* Social media brand colors */
+.another .twitter i {
+  color: #1DA1F2;
+}
+
+.another .linkedin i {
+  color: #0077B5;
+}
+
+.another .github i {
+  color: #4e1a93;
+}
+
+.another .instagram i {
+  color: #E4405F;
+}
+
+.another .gmail i {
+  color: #D44638;
+}
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -616,6 +650,16 @@ section,
   .hero p {
     font-size: 20px;
   }
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  z-index: 1;
 }
 
 /*--------------------------------------------------------------
@@ -1272,4 +1316,41 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+
+
+
+.gallery {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(167, 119, 227, 0.6), 0 0 20px rgba(167, 119, 227, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  cursor: pointer;
+  animation: pulseGlow 2s infinite;
+}
+
+.gallery:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(167, 119, 227, 0.8), 0 0 40px rgba(167, 119, 227, 0.6);
+  background: linear-gradient(135deg, #8f94fb, #4e54c8);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(167, 119, 227, 0.6), 0 0 20px rgba(167, 119, 227, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(167, 119, 227, 0.8), 0 0 30px rgba(167, 119, 227, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(167, 119, 227, 0.6), 0 0 20px rgba(167, 119, 227, 0.4);
+  }
 }
