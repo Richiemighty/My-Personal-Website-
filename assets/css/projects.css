@@ -1,0 +1,168 @@
+/* Body and layout basics */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+
+  h1 {
+    text-align: center;
+    color: #232f8b;
+    font-weight: bolder;
+    
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(-20px);
+    
+    /* Animation */
+    animation: fadeInMoveDown 1.5s ease forwards;
+    
+    /* Smooth color transition on hover */
+    transition: color 0.5s ease;
+  }
+
+  /* Keyframes for fade-in and slide down */
+  @keyframes fadeInMoveDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Change color on hover */
+  h1:hover {
+    color: #007BFF; /* Bootstrap primary blue or choose your bright color */
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .project-count {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #search {
+    padding: 10px 14px;
+    font-size: 16px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #search:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .search-container {
+      width: 100%;
+      justify-content: center;
+    }
+
+    #search {
+      width: 80%;
+      margin-top: 10px;
+    }
+  }
+
+  /* Card styles with gradient animation and image fallback */
+  .card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #080000;
+    min-height: 250px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Dark overlay for readability */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+  }
+
+  .card:hover::before {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  /* Content above overlay */
+  .card-body {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card a {
+    color: #0a0000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  .card a:hover {
+    text-decoration: underline;
+  }
+
+  .card p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #ddd;
+    user-select: none;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
