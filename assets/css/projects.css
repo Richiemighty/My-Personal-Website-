@@ -94,67 +94,70 @@
   /* Card styles with gradient animation and image fallback */
   .card {
     position: relative;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    color: #080000;
-    min-height: 250px;
-    max-height: 400px;
+    color: #ffffff;
+    min-height: 280px;
+    max-height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 15px;
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    background-image: linear-gradient(135deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
   }
-
+  
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
   }
-
-  /* Dark overlay for readability */
+  
   .card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 0;
-    border-radius: 12px;
+    border-radius: 16px;
     transition: background 0.3s ease;
   }
-
+  
   .card:hover::before {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.55);
   }
-
-  /* Content above overlay */
+  
   .card-body {
     position: relative;
     z-index: 1;
   }
-
+  
   .card a {
-    color: #0a0000;
-    font-size: 1.2rem;
+    color: #ffffff;
+    font-size: 1.25rem;
     font-weight: 700;
     text-decoration: none;
     user-select: none;
+    transition: color 0.3s ease;
   }
-
+  
   .card a:hover {
     text-decoration: underline;
+    color: #ffcc00;
   }
-
+  
   .card p {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    color: #ddd;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #f0f0f0;
     user-select: none;
   }
-
+  
+  /* Gradient animation */
   @keyframes gradientShift {
     0% {
       background-position: 0% 50%;
@@ -166,3 +169,7 @@
       background-position: 0% 50%;
     }
   }
+  
+  /* Optional: Add a Google Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  
