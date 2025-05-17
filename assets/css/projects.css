@@ -103,7 +103,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
-    background-image: linear-gradient(135deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+    background-image: linear-gradient(135deg, #1e3c72, #8abe2a, #6262c5, #ec0f64);
     background-size: 300% 300%;
     animation: gradientShift 10s ease infinite;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
