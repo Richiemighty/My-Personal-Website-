@@ -227,8 +227,9 @@ h6 {
   /* color: var(--contrast-color); */
   background-color: var(--accent-color);
   color: white;       /* or any visible contrasting color */
-  font-size: 22px;
+  font-size: 25px;
   display: flex;
+  justify-content: cente÷r;
   align-items: center;
   justify-content: center;
   width: 45px;
@@ -1573,6 +1574,10 @@ section,
 
 @media (max-width: 768px) {
   .header-toggle {
-    display: block !important;
+    display: flex !important;
+    background-color: #0077B5;
+    color: white;
+    font-size: 25px;
+    z-index: 1000;
   }
 }
