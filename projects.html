@@ -11,36 +11,263 @@
   <meta name="keywords" content="Richie Mighty, richiemighty, GitHub projects, data science, machine learning, statistics, R projects, portfolio" />
   <meta name="author" content="Richie Mighty" />
 
-  <!-- Open Graph Meta Tags (for social sharing & discoverability) -->
+  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Richie Mighty's GitHub Projects" />
   <meta property="og:description" content="Explore data science and machine learning projects by Richie Mighty." />
   <meta property="og:image" content="https://richiemighty.vercel.app/assets/img/logo2.png" />
   <meta property="og:url" content="https://richiemighty.vercel.app/" />
   <meta property="og:type" content="website" />
 
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/projects.css">
-  <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
-
-  <!-- Custom Styling -->
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Main Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    .page-header {
+      text-align: center;
+      margin: 20px 0 30px;
+    }
+    
+    .page-header h1 {
+      color: #2c3e50;
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .page-header a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Controls Section */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .project-count {
+      background: #3498db;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .search-container {
+      flex-grow: 1;
+      max-width: 400px;
+    }
+    
+    #search {
+      width: 100%;
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    
+    #search:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    /* Project Card */
+    .project-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .card-image {
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+    
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .project-card:hover .card-image img {
+      transform: scale(1.03);
+    }
+    
+    .card-content {
+      padding: 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-content h3 {
+      margin: 0 0 10px;
+      color: #2c3e50;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .card-content h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .card-content h3 a:hover {
+      color: #3498db;
+      text-decoration: underline;
+    }
+    
+    .card-content p {
+      color: #555;
+      margin: 0 0 15px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+    
+    .card-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    
+    .card-tech span {
+      background: #f1f1f1;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    
+    .language-icon {
+      margin-right: 4px;
+      font-size: 0.8rem;
+    }
+    
+    .github-link {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      color: #3498db;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .github-link:hover {
+      color: #2980b9;
+    }
+    
+    .github-link i {
+      margin-right: 6px;
+    }
+    
+    /* Loading State */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      font-size: 1rem;
+      color: #7f8c8d;
+      grid-column: 1 / -1;
+    }
+    
+    /* Error State */
+    .error-message {
+      text-align: center;
+      padding: 40px;
+      color: #e74c3c;
+      font-size: 1rem;
+      grid-column: 1 / -1;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .page-header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .search-container {
+        max-width: 100%;
+      }
+      
+      .card-image {
+        height: 140px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header class="page-header">
+      <a href="index.html"><h1>Richiemighty's GitHub Projects</h1></a>
+    </header>
 
-  <a href="index.html"> <h1>Richiemighty's GitHub Projects</h1> </a>
-
-  <div class="controls">
-    <div class="project-count" id="project-count">Counting...</div>
-    <div class="search-container">
-      <input type="text" id="search" placeholder="Search projects..." />
+    <div class="controls">
+      <div class="project-count" id="project-count">Counting...</div>
+      <div class="search-container">
+        <input type="text" id="search" placeholder="Search projects..." />
+      </div>
+    </div>
+    
+    <div class="projects-grid" id="repos">
+      <div class="loading">Fetching Projects...</div>
     </div>
   </div>
-  
-  <div class="row" id="repos">Fetching Projects...</div>
 
-  <!-- Script Section -->
   <script>
     const username = "Richiemighty";
     const reposContainer = document.getElementById("repos");
@@ -49,56 +276,51 @@
 
     let allRepos = [];
 
-    // Cool animated gradients
-    const gradients = [
-      'linear-gradient(135deg, #667eea, #764ba2, #6b8dd6, #b06ab3)',
-      'linear-gradient(135deg, #f6d365, #fda085, #fbc7a4, #f6d365)',
-      'linear-gradient(135deg, #89f7fe, #66a6ff, #5477ff, #8d9eff)',
-      'linear-gradient(135deg, #f7971e, #ffd200, #fcb045, #f7971e)',
-      'linear-gradient(135deg, #ee9ca7, #ffdde1, #fbc7a4, #ee9ca7)',
-      'linear-gradient(135deg, #43cea2, #185a9d, #43cea2, #1e3c72)',
-      'linear-gradient(135deg, #667eea, #764ba2, #6b8dd6, #b06ab3)',
-      'linear-gradient(135deg, #f7971e, #ffd200, #fcb045, #f7971e)'
-    ];
+    // Language to icon mapping
+    const languageIcons = {
+      'JavaScript': 'fab fa-js',
+      'Python': 'fab fa-python',
+      'HTML': 'fab fa-html5',
+      'CSS': 'fab fa-css3-alt',
+      'R': 'fas fa-chart-line',
+      'Jupyter Notebook': 'fas fa-book',
+      'TypeScript': 'fab fa-js-square',
+      'Java': 'fab fa-java',
+      'PHP': 'fab fa-php',
+      'Ruby': 'fab fa-ruby',
+      'C++': 'fas fa-file-code',
+      'C#': 'fab fa-microsoft',
+      'Swift': 'fab fa-apple',
+      'Kotlin': 'fab fa-android',
+      'Go': 'fas fa-code',
+      'Rust': 'fas fa-microchip',
+      'Shell': 'fas fa-terminal'
+    };
 
-    function getRandomGradient() {
-      return gradients[Math.floor(Math.random() * gradients.length)];
+    function getLanguageIcon(language) {
+      return languageIcons[language] || 'fas fa-code';
     }
 
     function createCard(repo) {
-      const imageNames = ["banner.png", "preview.png", "screenshot.png"];
-
-      const col = document.createElement("div");
-      col.className = "col-12 col-md-6 col-lg-4 mb-4";
+      const imageNames = ["banner.png", "preview.png", "screenshot.png", "demo.png"];
+      const defaultImages = {
+        'Python': 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png',
+        'JavaScript': 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png',
+        'R': 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/r/r.png',
+        'default': 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/github/github.png'
+      };
 
       const card = document.createElement("div");
-      card.className = "card h-100 text-white";
-      card.style.borderRadius = "12px";
-      card.style.position = "relative";
-      card.style.overflow = "hidden";
-      card.style.minHeight = "250px";
-      card.style.backgroundSize = "400% 400%";
-      card.style.animation = "gradientShift 15s ease infinite";
-
-      // Overlay done by CSS ::before
-
-      const content = document.createElement("div");
-      content.className = "card-body";
-
-      const title = document.createElement("a");
-      title.href = repo.html_url;
-      title.target = "_blank";
-      title.rel = "noopener noreferrer";
-      title.textContent = repo.name;
-
-      const desc = document.createElement("p");
-      desc.textContent = repo.description || "No description provided.";
-
-      content.appendChild(title);
-      content.appendChild(desc);
-      card.appendChild(content);
-      col.appendChild(card);
-
+      card.className = "project-card";
+      
+      // Card Image
+      const cardImage = document.createElement("div");
+      cardImage.className = "card-image";
+      
+      const img = document.createElement("img");
+      img.alt = repo.name;
+      img.loading = "lazy";
+      
       // Try image URLs sequentially
       (async () => {
         for (const name of imageNames) {
@@ -106,25 +328,86 @@
           try {
             const res = await fetch(url, { method: "HEAD" });
             if (res.ok) {
-              card.style.backgroundImage = `url(${url})`;
-              card.style.animation = "none"; // stop gradient animation if image found
-              card.style.backgroundPosition = "center";
-              card.style.backgroundRepeat = "no-repeat";
-              card.style.backgroundSize = "cover";
-              return;
+              img.src = url;
+              break;
             }
           } catch (_) {}
         }
-        // No image found, fallback to random gradient
-        card.style.backgroundImage = getRandomGradient();
+        
+        // If no image found, use default based on language
+        if (!img.src) {
+          img.src = defaultImages[repo.language] || defaultImages['default'];
+        }
+        
+        cardImage.appendChild(img);
+        card.appendChild(cardImage);
       })();
-
-      return col;
+      
+      // Card Content
+      const cardContent = document.createElement("div");
+      cardContent.className = "card-content";
+      
+      const title = document.createElement("h3");
+      title.innerHTML = `
+        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+          ${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}
+        </a>
+      `;
+      
+      const desc = document.createElement("p");
+      desc.textContent = repo.description || "No description provided.";
+      
+      const techStack = document.createElement("div");
+      techStack.className = "card-tech";
+      
+      if (repo.language) {
+        const langSpan = document.createElement("span");
+        langSpan.innerHTML = `
+          <i class="${getLanguageIcon(repo.language)} language-icon"></i>
+          ${repo.language}
+        `;
+        techStack.appendChild(langSpan);
+      }
+      
+      if (repo.topics && repo.topics.length > 0) {
+        repo.topics.slice(0, 3).forEach(topic => {
+          const topicSpan = document.createElement("span");
+          topicSpan.textContent = topic;
+          techStack.appendChild(topicSpan);
+        });
+      }
+      
+      const githubLink = document.createElement("a");
+      githubLink.className = "github-link";
+      githubLink.href = repo.html_url;
+      githubLink.target = "_blank";
+      githubLink.rel = "noopener noreferrer";
+      githubLink.innerHTML = '<i class="fab fa-github"></i> View on GitHub';
+      
+      cardContent.appendChild(title);
+      cardContent.appendChild(desc);
+      cardContent.appendChild(techStack);
+      cardContent.appendChild(githubLink);
+      card.appendChild(cardContent);
+      
+      return card;
     }
 
     function displayRepos(repos) {
+      if (repos.length === 0) {
+        reposContainer.innerHTML = `
+          <div class="error-message">
+            No projects found matching your search.
+          </div>
+        `;
+        projectCount.textContent = "0 projects found";
+        return;
+      }
+      
       reposContainer.innerHTML = "";
-      repos.forEach(repo => reposContainer.appendChild(createCard(repo)));
+      repos.forEach(repo => {
+        reposContainer.appendChild(createCard(repo));
+      });
       projectCount.textContent = `${repos.length} project${repos.length !== 1 ? "s" : ""} found`;
     }
 
@@ -132,30 +415,34 @@
       const term = searchInput.value.toLowerCase();
       const filtered = allRepos.filter(repo =>
         repo.name.toLowerCase().includes(term) ||
-        (repo.description && repo.description.toLowerCase().includes(term))
+        (repo.description && repo.description.toLowerCase().includes(term)) ||
+        (repo.language && repo.language.toLowerCase().includes(term)) ||
+        (repo.topics && repo.topics.some(topic => topic.toLowerCase().includes(term)))
       );
       displayRepos(filtered);
     }
 
-    fetch(`https://api.github.com/users/${username}/repos`)
+    // Fetch GitHub repositories
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`)
       .then(res => {
-        if (!res.ok) throw new Error("Failed to fetch repos");
+        if (!res.ok) throw new Error("Failed to fetch repositories");
         return res.json();
       })
       .then(repos => {
-        allRepos = repos;
+        // Filter out forked repos if needed
+        allRepos = repos.filter(repo => !repo.fork);
         displayRepos(allRepos);
       })
       .catch(err => {
         console.error(err);
-        reposContainer.innerHTML = "<p>Error loading repositories.</p>";
+        reposContainer.innerHTML = `
+          <div class="error-message">
+            Error loading repositories. Please try again later.
+          </div>
+        `;
       });
 
     searchInput.addEventListener("input", filterRepos);
   </script>
-
-  <!-- Bootstrap Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
